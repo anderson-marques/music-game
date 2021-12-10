@@ -1,3 +1,7 @@
+
+function playMusic(){
+    document.getElementById("music").play()
+}
 console.log("iniciando o jogo");
 
 var score = 0;
