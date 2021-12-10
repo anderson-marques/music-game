@@ -1,7 +1,18 @@
+var gamePaused = true;
 
-function playMusic(){
-    document.getElementById("music").play()
+function pauseGame() {
+  gamePaused = true;
+  document.getElementById("music").pause();
 }
+
+function startGame() {
+  gamePaused = false;
+  let music = document.getElementById("music");
+  music.load();
+  music.play();
+  document.getElementById("arrow_a").style.top = "0px";
+}
+
 console.log("iniciando o jogo");
 
 var score = 0;
@@ -16,12 +27,9 @@ const keyPoints = {
 
 let arrowA = document.getElementById("arrow_a");
 
-console.log("Image position is " + arrowA.getBoundingClientRect().top);
-
 let gameLoop = function () {
+  if (gamePaused) return;
 
-
-  console.log("Passei aqui");
   document.getElementById("score").innerHTML = score;
 
   if (score >= 1000) {
